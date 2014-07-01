@@ -10,14 +10,14 @@ define varnish::vcl (
   include varnish
   include varnish::params
 
-  exec { 'vcl_reload':
+  exec { "vcl_reload_$name":
     command     => $varnish::params::vcl_reload,
     refreshonly => true,
   }
 
   file { $file:
     content => $content,
-    notify  => Exec['vcl_reload'],
+    notify  => Exec["vcl_reload_$name"],
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
