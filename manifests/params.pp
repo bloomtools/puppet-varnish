@@ -10,7 +10,7 @@ class varnish::params {
       $service_name = 'varnish'
       $repoclass    = 'varnish::repo::el6'
       $sysconfig    = '/etc/sysconfig/varnish'
-      $vcl_reload   = '/usr/bin/varnish_reload_vcl'
+      $vcl_reload   = '/etc/init.d/varnish reload'
     }
     default: {
       fail("${::operatingsystem} not supported")
